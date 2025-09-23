@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Apps — Meow EchoLog</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <header>
+        <div>
+          <div class="title">My Apps</div>
+          <div class="subtitle">A central place for your applications — minimalist, private, and dark by design.</div>
+        </div>
+      </header>
+
+      <div class="controls">
+        <input id="q" class="search" placeholder="Search apps..." aria-label="Search apps" />
+        <div style="display:flex;gap:8px;align-items:center">
+          <a href="#" class="btn primary">New App</a>
+        </div>
+      </div>
+
+      <div class="apps" id="appsList" role="list">
+        <!-- app cards injected by JS -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" id="appModal">
+      <div class="modal-header">
+        <div class="app-icon"><img id="modalIcon" src="icon-56.png" width="56" height="56" style="border-radius:10px;display:block;object-fit:cover;" alt=""/></div>
+        <div>
+          <div class="modal-title" id="modalTitle">App name</div>
+          <div class="muted" id="modalSubtitle">App subtitle / short description</div>
+        </div>
+        <button class="close-x" id="closeModal" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <p class="muted">Quick notes about this app and links to its legal statements.</p>
+      </div>
+      <div class="modal-actions">
+        <a id="privacyLink" class="btn primary" href="#">Privacy Policy</a>
+        <a id="termsLink" class="btn" href="#">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:fixed;left:12px;bottom:12px;color:var(--muted);font-size:0.9rem">Meow EchoLog © 2025</div>
+
+  <script>
+    // Data-driven apps list so it's easy to add new apps later
+    const apps = [
+      {
+        id: 'meow-echo',
+        name: 'Meow EchoLog',
+        subtitle: 'Minimal, privacy-first logging app',
+        desc: 'Capture short notes and moments locally on your device. Nothing is transmitted unless you choose to share it.',
+        icon: 'icon-44.png',
+        privacy: 'primary.html',
+        terms: 'term-of-use.html'
+      }
+      // add future apps here
+    ];
+
+    const appsList = document.getElementById('appsList');
+    const qInput = document.getElementById('q');
+
+    function renderApps(filter=''){
+      appsList.innerHTML = '';
+      const f = filter.trim().toLowerCase();
+      const list = apps.filter(a => !f || a.name.toLowerCase().includes(f) || (a.subtitle||'').toLowerCase().includes(f));
+      list.forEach(app => {
+        const card = document.createElement('button');
+        card.className = 'app-card';
+        card.type = 'button';
+        card.setAttribute('aria-label', `${app.name} - ${app.subtitle}`);
+        card.setAttribute('role','listitem');
+        card.innerHTML = `
+          <div class="app-icon"><img src="${app.icon}" width="56" height="56" alt="${app.name} icon" style="width:56px;height:56px;object-fit:cover;border-radius:10px;"/></div>
+          <div class="app-info">
+            <div class="app-name">${app.name}</div>
+            <div class="app-desc muted">${app.subtitle}</div>
+            <div class="app-meta">
+              <div class="muted">v1.0</div>
+              <div style="margin-left:auto"><span class="muted">•</span> <span class="muted">Local</span></div>
+            </div>
+          </div>
+        `;
+        card.addEventListener('click', ()=> openModal(app));
+        appsList.appendChild(card);
+      });
+      if(list.length===0){
+        appsList.innerHTML = '<div class="muted" style="padding:24px">No apps found.</div>';
+      }
+    }
+
+    // Modal logic
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const appModal = document.getElementById('appModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalIcon = document.getElementById('modalIcon');
+    const privacyLink = document.getElementById('privacyLink');
+    const termsLink = document.getElementById('termsLink');
+    const closeModal = document.getElementById('closeModal');
+
+    function openModal(app){
+      // Use a robust replacement of the numeric size in the filename (e.g. icon-44.png -> icon-56.png)
+      // If the icon filename includes a size number, replace it with 56; otherwise fall back to icon-56.png
+      modalIcon.src = (app.icon && app.icon.match(/(\d+)\.png$/)) ? app.icon.replace(/(\d+)(?=\.png$)/, '56') : 'icon-56.png';
+      modalTitle.textContent = app.name;
+      modalSubtitle.textContent = app.subtitle;
+      // Show short description first
+      modalBody.innerHTML = `<p class="muted">${app.desc}</p>`;
+      // set links (open the legal pages as URLs — user requested direct URLs)
+      privacyLink.href = app.privacy;
+      privacyLink.target = '_blank';
+      privacyLink.rel = 'noopener';
+      termsLink.href = app.terms;
+      termsLink.target = '_blank';
+      termsLink.rel = 'noopener';
+      modalBackdrop.style.display = 'flex';
+      setTimeout(()=>{modalBackdrop.setAttribute('aria-hidden','false');appModal.classList.add('show');},10);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFn(){
+      appModal.classList.remove('show');
+      modalBackdrop.setAttribute('aria-hidden','true');
+      setTimeout(()=>{modalBackdrop.style.display='none';document.body.style.overflow='auto';},220);
+    }
+    closeModal.addEventListener('click', closeModalFn);
+    modalBackdrop.addEventListener('click', (e)=>{ if(e.target===modalBackdrop) closeModalFn(); });
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModalFn(); });
+
+    // search
+    qInput.addEventListener('input', e=> renderApps(e.target.value));
+
+    // initial render
+    renderApps();
+  </script>
+</body>
+</html>
