@@ -376,17 +376,49 @@ section strong {
   color: var(--text-primary);
 }
 
+section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 20px 0 12px 0;
+  color: var(--text-primary);
+}
+
+section h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 16px 0 8px 0;
+  color: var(--text-secondary);
+}
+
 section p {
   margin-bottom: 16px;
 }
 
-section ul {
+section ul, section ol {
   padding-left: 20px;
   margin: 12px 0;
 }
 
 section li {
   margin-bottom: 8px;
+}
+
+/* 嵌套列表样式 */
+section ul ul, section ol ul, section ul ol, section ol ol {
+  margin: 8px 0;
+  padding-left: 16px;
+}
+
+section ul ul li, section ol ul li, section ul ol li, section ol ol li {
+  margin-bottom: 4px;
+  font-size: 0.95rem;
 }
 
 details {

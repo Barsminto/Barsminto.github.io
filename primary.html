@@ -5,6 +5,86 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VaultVoice Recorder — Privacy Policy</title>
   <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    /* Markdown 渲染样式 */
+    #markdown-content {
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    
+    #markdown-content h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 24px 0 16px 0;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 8px;
+    }
+    
+    #markdown-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 20px 0 12px 0;
+      color: var(--text-primary);
+    }
+    
+    #markdown-content h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 16px 0 10px 0;
+      color: var(--text-primary);
+    }
+    
+    #markdown-content h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 14px 0 8px 0;
+      color: var(--text-secondary);
+    }
+    
+    #markdown-content p {
+      margin-bottom: 16px;
+    }
+    
+    #markdown-content ul, #markdown-content ol {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    
+    #markdown-content li {
+      margin-bottom: 8px;
+    }
+    
+    #markdown-content ul ul, #markdown-content ol ul, 
+    #markdown-content ul ol, #markdown-content ol ol {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+    
+    #markdown-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    #markdown-content hr {
+      border: none;
+      border-top: 1px solid var(--glass-border);
+      margin: 24px 0;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+    
+    .error {
+      text-align: center;
+      padding: 40px;
+      color: #ff6b6b;
+    }
+  </style>
 </head>
 <body>
   <div class="page">
@@ -23,53 +103,7 @@
       </nav>
 
       <main>
-        <section>
-          <strong>Introduction</strong>
-          <p class="muted">This Privacy Policy applies to the VaultVoice Recorder application. The app is provided "AS IS" and is designed to keep your data private by default.</p>
-        </section>
-
-        <section>
-          <strong>Information We Collect</strong>
-          <p class="muted">VaultVoice Recorder may collect non-identifying usage information such as device type, operating system, and basic analytics for improving the app. The app does not collect exact device location.</p>
-          <details>
-            <summary style="cursor:pointer">Examples</summary>
-            <ul class="muted">
-              <li>IP address (for analytics)</li>
-              <li>Visited pages and time spent in the app</li>
-              <li>Operating system version</li>
-            </ul>
-          </details>
-        </section>
-
-        <section>
-          <strong>How We Use Information</strong>
-          <p class="muted">Collected information is used to improve the app, provide support, and monitor performance. Aggregated and anonymized data may be shared with trusted third parties to help analyze trends and improve the service.</p>
-        </section>
-
-        <section>
-          <strong>Data Retention &amp; Deletion</strong>
-          <p class="muted">We retain user-provided data for as long as the app is used and for a reasonable period after. If you want your data deleted, contact us at the email below and we will respond promptly.</p>
-        </section>
-
-        <section>
-          <strong>Children</strong>
-          <p class="muted">The app is not directed to children under the age of 13. We do not knowingly collect personal information from children.</p>
-        </section>
-
-        <section>
-          <strong>Security</strong>
-          <p class="muted">We take reasonable measures to protect your information, but cannot guarantee absolute security. Please keep your device secure and avoid jailbreaking or rooting.</p>
-        </section>
-
-        <section>
-          <strong>Changes to This Policy</strong>
-          <p class="muted">We may update this Privacy Policy occasionally. The effective date: 2025-09-23.</p>
-        </section>
-
-        <section>
-          <strong>Contact</strong>
-          <p class="muted">If you have any questions, contact us at: <a href="mailto:antiumbo123@gmail.com" style="color:#cfe7ff">antiumbo123@gmail.com</a></p>
-        </section>
+        <div id="markdown-content" class="loading">Loading privacy policy...</div>
 
         <footer style="margin-top:16px;text-align:right">
           <div class="muted">Bran Li • VaultVoice Recorder © 2025</div>
@@ -77,5 +111,40 @@
       </main>
     </div>
   </div>
+
+  <script>
+    // 加载并渲染Markdown文件
+    async function loadMarkdown() {
+      try {
+        const response = await fetch('PrivacyPolicy_en.md');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const markdownText = await response.text();
+        
+        // 配置marked选项
+        marked.setOptions({
+          breaks: true,
+          gfm: true,
+          headerIds: false,
+          mangle: false
+        });
+        
+        // 渲染Markdown
+        const htmlContent = marked.parse(markdownText);
+        document.getElementById('markdown-content').innerHTML = htmlContent;
+        document.getElementById('markdown-content').className = '';
+        
+      } catch (error) {
+        console.error('Error loading markdown:', error);
+        document.getElementById('markdown-content').innerHTML = 
+          `<div class="error">Error loading privacy policy: ${error.message}</div>`;
+        document.getElementById('markdown-content').className = 'error';
+      }
+    }
+
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', loadMarkdown);
+  </script>
 </body>
 </html>
