@@ -5,8 +5,88 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VaultVoice Recorder — Terms of Use</title>
   <link rel="stylesheet" href="assets/styles.css">
- </head>
- <body>
+ <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    /* Markdown 渲染样式 */
+    #markdown-content {
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    
+    #markdown-content h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 24px 0 16px 0;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 8px;
+    }
+    
+    #markdown-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 20px 0 12px 0;
+      color: var(--text-primary);
+    }
+    
+    #markdown-content h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 16px 0 10px 0;
+      color: var(--text-primary);
+    }
+    
+    #markdown-content h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 14px 0 8px 0;
+      color: var(--text-secondary);
+    }
+    
+    #markdown-content p {
+      margin-bottom: 16px;
+    }
+    
+    #markdown-content ul, #markdown-content ol {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    
+    #markdown-content li {
+      margin-bottom: 8px;
+    }
+    
+    #markdown-content ul ul, #markdown-content ol ul, 
+    #markdown-content ul ol, #markdown-content ol ol {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+    
+    #markdown-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    #markdown-content hr {
+      border: none;
+      border-top: 1px solid var(--glass-border);
+      margin: 24px 0;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+    
+    .error {
+      text-align: center;
+      padding: 40px;
+      color: #ff6b6b;
+    }
+  </style>
+</head>
+<body>
   <div class="page">
     <div class="card">
       <header>
@@ -18,79 +98,12 @@
       </header>
 
       <nav>
-        <a href="index.html" class="btn primary">Back to Apps</a>
-        <a href="primary.html" class="btn">Privacy Policy</a>
+        <a href="index.html" class="btn">Back to Apps</a>
+        <a href="privacy.html" class="btn">Privacy Policy</a>
       </nav>
 
       <main>
-        <section>
-          <h2>Terms of Use</h2>
-          <p class="muted"><strong>Last Updated</strong>: Nov 6, 2025</p>
-          <p class="muted">Welcome to VaultVoice Recorder! These Terms of Use govern your access to and use of our recording application and related services. By downloading, installing, or using VaultVoice Recorder, you agree to comply with these terms.</p>
-        </section>
-
-        <section>
-          <h3>1. Service Description</h3>
-          <p class="muted">VaultVoice Recorder is a professional voice recording application that provides users with secure, high-quality recording functionality. The application supports local recording, storage, encryption, and management of audio files. All recording data is stored locally on your device, and we do not collect or access any of your personal information or recording content.</p>
-        </section>
-
-        <section>
-          <h3>2. User Rights</h3>
-          <p class="muted">You have the right to:</p>
-          <ul class="muted">
-            <li>Use the basic recording functionality of the application for free.</li>
-            <li>Access, manage, and export your recording files at any time.</li>
-            <li>Choose to use advanced features such as encryption protection (Safe).</li>
-            <li>Choose to unlock all premium features through a one-time purchase.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>3. User Responsibilities</h3>
-          <p class="muted">When using this application, you agree to:</p>
-          <ul class="muted">
-            <li><strong>Data Security</strong>: Take appropriate measures to protect your device and recording data. We recommend that you regularly back up important recordings to prevent data loss due to device damage, loss, or other reasons.</li>
-            <li><strong>Backup Responsibility</strong>: You are responsible for the backup of your recording data. Although the application provides local storage functionality, we do not provide cloud backup services. Please ensure that you regularly back up important recordings.</li>
-            <li><strong>Access Credential Custody</strong>: If you choose to use the Safe feature, please properly safeguard your Face ID, Touch ID, or PIN code. If these authentication methods fail, you may not be able to access the recordings in the Safe.</li>
-            <li><strong>Legal Compliance</strong>: Ensure that your use of the application complies with applicable laws and regulations. When recording, please comply with local laws and obtain the consent of relevant personnel when necessary.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>4. Commercial Use Explanation</h3>
-          <p class="muted">The application provides a one-time purchase option, which is used to unlock all premium features. This purchase is valid for a lifetime and is not a subscription model. The purpose of this purchase is to support the continued development and maintenance of the application.</p>
-          <ul class="muted">
-            <li><strong>One-Time Purchase</strong>: After purchase, you will have lifetime access to all current and future premium features.</li>
-            <li><strong>No Auto-Renewal</strong>: This is not a subscription service and will not automatically charge.</li>
-            <li><strong>Refund Policy</strong>: Refunds are handled in accordance with the App Store's standard refund policy. If you have any questions about your purchase, please contact the App Store customer service.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>5. Disclaimer</h3>
-          <p class="muted">The application is provided "as is" and "as available". We do our best to ensure the stability and security of the application, but we do not make any express or implied warranties, including but not limited to:</p>
-          <ul class="muted">
-            <li>Guarantees of the applicability of the application for specific purposes.</li>
-            <li>Guarantees of uninterrupted, timely, secure, or error-free services.</li>
-            <li>Guarantees of the accuracy or completeness of the information obtained through the use of the application.</li>
-          </ul>
-          <p class="muted">You understand and agree that any risk arising from your use of the application is borne by you. We are not responsible for any direct, indirect, incidental, special, consequential, or punitive damages, including but not limited to data loss, business interruption, or other commercial damages.</p>
-        </section>
-
-        <section>
-          <h3>6. Service Modification, Interruption, or Termination</h3>
-          <p class="muted">We reserve the right to modify, interrupt, or terminate the application or any part of the services at any time without prior notice. We are not responsible for any damages caused by these actions.</p>
-          <p class="muted">In the following circumstances, we may suspend or terminate your right to use the application:</p>
-          <ul class="muted">
-            <li>You violate these Terms of Use or applicable laws and regulations.</li>
-            <li>We believe your actions may cause legal liability to you, us, or other users.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>7. Contact Us</h3>
-          <p class="muted">If you have any questions about these Terms of Use, please contact us through the support channels within the application.</p>
-        </section>
+        <div id="markdown-content" class="loading">Loading terms of use...</div>
 
         <footer style="margin-top:16px;text-align:right">
           <div class="muted">Bran Li • VaultVoice Recorder © 2025</div>
@@ -98,5 +111,39 @@
       </main>
     </div>
   </div>
- </body>
+
+  <script>
+    // 加载并渲染Markdown文件
+    async function loadMarkdown() {
+      try {
+        const response = await fetch('assets/TermsOfUse_en.md');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const markdownText = await response.text();
+        
+        // 配置marked选项
+        marked.setOptions({
+          breaks: true,
+          gfm: true,
+          headerIds: false,
+          mangle: false
+        });
+        
+        // 渲染Markdown
+        const htmlContent = marked.parse(markdownText);
+        document.getElementById('markdown-content').innerHTML = htmlContent;
+        document.getElementById('markdown-content').className = '';
+        
+      } catch (error) {
+        console.error('Error loading markdown:', error);
+        document.getElementById('markdown-content').innerHTML = 
+          `<div class="error">Error loading terms of use: ${error.message}</div>`;
+        document.getElementById('markdown-content').className = 'error';
+      }
+    }
+
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', loadMarkdown);
+  </script>
  </html>

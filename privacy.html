@@ -116,7 +116,7 @@
     // 加载并渲染Markdown文件
     async function loadMarkdown() {
       try {
-        const response = await fetch('PrivacyPolicy_en.md');
+        const response = await fetch('assets/PrivacyPolicy_en.md');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
