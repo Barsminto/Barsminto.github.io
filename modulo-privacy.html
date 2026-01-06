@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Modulo — Privacy Policy</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    #markdown-content {
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    
+    #markdown-content h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 24px 0 16px 0;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 8px;
+    }
+    
+    #markdown-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 20px 0 12px 0;
+      color: var(--text-primary);
+    }
+    
+    #markdown-content h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 16px 0 10px 0;
+      color: var(--text-primary);
+    }
+    
+    #markdown-content h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 14px 0 8px 0;
+      color: var(--text-secondary);
+    }
+    
+    #markdown-content p {
+      margin-bottom: 16px;
+    }
+    
+    #markdown-content ul, #markdown-content ol {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    
+    #markdown-content li {
+      margin-bottom: 8px;
+    }
+    
+    #markdown-content ul ul, #markdown-content ol ul, 
+    #markdown-content ul ol, #markdown-content ol ol {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+    
+    #markdown-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    #markdown-content hr {
+      border: none;
+      border-top: 1px solid var(--glass-border);
+      margin: 24px 0;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+    
+    .error {
+      text-align: center;
+      padding: 40px;
+      color: #ff6b6b;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <header>
+        <div class="logo-text">Bran Li</div>
+        <div>
+          <h1>Privacy Policy</h1>
+          <div class="lead">This Privacy Policy describes how Modulo collects and uses information.</div>
+        </div>
+      </header>
+
+      <nav>
+        <a href="index.html" class="btn primary">Back to Apps</a>
+        <a href="modulo-terms.html" class="btn">Terms &amp; Conditions</a>
+      </nav>
+
+      <main>
+        <div id="markdown-content"></div>
+
+        <footer style="margin-top:16px;text-align:right">
+          <div class="muted">Bran Li • Modulo © 2025</div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const markdownContent = `# Modulo Privacy Policy
+
+Modulo stores your photos and videos locally on your device. We do not operate servers and do not collect, sell, or share your private content.
+
+## Data We Access
+
+- **Photos and videos** you import or capture inside the app are stored only in your private vault.
+- If you enable **biometrics**, we use Face ID/Touch ID only to unlock the vault. Biometric data never leaves your device.
+
+## Permissions
+
+- **Camera**: used to capture new photos and videos.
+- **Microphone**: used to record audio with videos.
+- **Photo Library**: used to import items you select.
+- **Network**: used only to connect to Apple's App Store servers for purchase verification. You may disable network access after purchasing.
+
+## Purchases
+
+In-app purchases are handled by Apple. We do not receive your payment details.
+
+## Contact
+
+If you have questions, contact us at [antiumbo123@gmail.com](mailto:antiumbo123@gmail.com).
+`;
+
+    marked.setOptions({
+      breaks: true,
+      gfm: true,
+      headerIds: false,
+      mangle: false
+    });
+    
+    document.getElementById('markdown-content').innerHTML = marked.parse(markdownContent);
+    document.getElementById('markdown-content').className = '';
+  </script>
+</body>
+</html>

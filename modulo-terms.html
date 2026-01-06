@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Modulo — Terms of Use</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    #markdown-content {
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    
+    #markdown-content h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 24px 0 16px 0;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 8px;
+    }
+    
+    #markdown-content h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 20px 0 12px 0;
+      color: var(--text-primary);
+    }
+    
+    #markdown-content h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 16px 0 10px 0;
+      color: var(--text-primary);
+    }
+    
+    #markdown-content h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 14px 0 8px 0;
+      color: var(--text-secondary);
+    }
+    
+    #markdown-content p {
+      margin-bottom: 16px;
+    }
+    
+    #markdown-content ul, #markdown-content ol {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    
+    #markdown-content li {
+      margin-bottom: 8px;
+    }
+    
+    #markdown-content ul ul, #markdown-content ol ul, 
+    #markdown-content ul ol, #markdown-content ol ol {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+    
+    #markdown-content strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    #markdown-content hr {
+      border: none;
+      border-top: 1px solid var(--glass-border);
+      margin: 24px 0;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+    
+    .error {
+      text-align: center;
+      padding: 40px;
+      color: #ff6b6b;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <header>
+        <div class="logo-text">Bran Li</div>
+        <div>
+          <h1>Terms of Use</h1>
+          <div class="lead">By using Modulo, you agree to these terms and conditions.</div>
+        </div>
+      </header>
+
+      <nav>
+        <a href="index.html" class="btn primary">Back to Apps</a>
+        <a href="modulo-privacy.html" class="btn">Privacy Policy</a>
+      </nav>
+
+      <main>
+        <div id="markdown-content"></div>
+
+        <footer style="margin-top:16px;text-align:right">
+          <div class="muted">Bran Li • Modulo © 2025</div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const markdownContent = `# Modulo Terms of Use
+
+By using Modulo, you agree to the following terms:
+
+## 1. Use of the App
+
+You are responsible for all content you store in the app. Do not use the app for illegal content.
+
+## 2. Security
+
+Your vault is protected by your passcode and, if enabled, biometrics. You are responsible for keeping your passcode secure.
+
+## 3. Subscriptions and Purchases
+
+Lifetime access is a one-time purchase and is tied to your Apple ID. Apple's terms and policies apply to all purchases.
+
+## 4. Disclaimer
+
+The app is provided "as is" without warranties. We are not liable for data loss resulting from device issues or user error.
+
+## 5. Changes
+
+We may update these terms from time to time. Continued use means you accept the updated terms.
+
+## Contact
+
+Questions? Email [antiumbo123@gmail.com](mailto:antiumbo123@gmail.com).
+`;
+
+    marked.setOptions({
+      breaks: true,
+      gfm: true,
+      headerIds: false,
+      mangle: false
+    });
+    
+    document.getElementById('markdown-content').innerHTML = marked.parse(markdownContent);
+    document.getElementById('markdown-content').className = '';
+  </script>
+</body>
+</html>
